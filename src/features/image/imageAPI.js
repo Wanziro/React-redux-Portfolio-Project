@@ -11,7 +11,7 @@ export const fetchImages = async () => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(response.data.map((image) => image.urls.regular)),
+    body: response.data.map((image) => image.urls.regular),
   };
   return result.body;
 };

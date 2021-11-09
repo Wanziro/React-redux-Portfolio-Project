@@ -44,6 +44,36 @@ const styles = {
   },
 };
 
-function Quote({ classes }) {}
+function Quote({ classes }) {
+  const quote = useSelector(selectQuote);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchQuote());
+  }, [dispatch]);
+
+  if (quote.loading) {
+    return (
+      <div className={classes.div}>
+        <CircularProgress />
+      </div>
+    );
+  } else if (quote.failedToLoad) {
+    return (
+      <div className={classes.div}>
+        <p className={classes.failMessage}>
+          Failed to get the quote. try again later after sometime
+        </p>
+      </div>
+    );
+  } else {
+    return (
+      <div className={classes.div}>
+        <p className={classes.text}>"{quote.text}"</p>
+        <p className={classes.author}>{quote.author}</p>
+      </div>
+    );
+  }
+}
 
 export default withStyles(styles)(Quote);
