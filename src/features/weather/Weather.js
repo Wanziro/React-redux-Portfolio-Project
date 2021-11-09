@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { useSelector, useDispatch } from "react-redux";
+import { WiCloudy } from "react-icons/wi";
 import {
   selectWeather,
   fetchCurrentWeather,
@@ -11,7 +12,8 @@ import { CircularProgress } from "@material-ui/core";
 const styles = {
   weatherContainer: {
     display: "flex",
-    marginRight: "1rem",
+    marginRight: "5rem",
+    margiLeft: "5rem",
     flexWrap: "wrap",
     alignItems: "center",
     justifyContent: "flex-end",
@@ -95,21 +97,16 @@ function Weather({ classes }) {
     return (
       <div className={classes.weatherContainer}>
         <p className={classes.failMessage}>
-          Weather data failed to load. Please{" "}
-          <button
-            className={classes.refreshButton}
-            onClick={() => window.location.reload()}
-          >
-            refresh page
-          </button>{" "}
-          to try again.
+          Failed to load weather. try again later after sometime
         </p>
       </div>
     );
   } else {
     return (
       <div className={classes.weatherContainer}>
-        <div className={classes.icon}></div>
+        <div className={classes.icon}>
+          <WiCloudy size={80} color="white" />
+        </div>
         <div className={classes.tempDescriptionContainer}>
           <h1 className={classes.temperature}>{weather.temperature}&deg;</h1>
           <p className={classes.description}>{weather.description}</p>

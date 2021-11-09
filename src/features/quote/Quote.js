@@ -6,13 +6,13 @@ import { CircularProgress } from "@material-ui/core";
 
 const styles = {
   div: {
-    backgroundColor: "rgba(0,0,0,0.5)",
-    padding: "1rem",
+    paddingLeft: "10rem",
+    paddingRight: "10rem",
+    paddingBottom: "3rem",
     boxSizing: "border-box",
   },
   text: {
     color: "white",
-    fontStyle: "italic",
     margin: "0",
   },
   author: {

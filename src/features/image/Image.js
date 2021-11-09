@@ -13,17 +13,15 @@ import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 const styles = {
   gridContainer: {
-    height: "100%",
-    minHeight: "100vh",
+    height: "100vh",
     display: "flex",
     flexDirection: "column",
     flexWrap: "no-wrap",
     justifyContent: "space-between",
     boxSizing: "border-box",
-    backgroundSize: "cover",
     minWidth: "320px",
-    zIndex: -2,
-    paddingTop: "1rem",
+    position: "relative",
+    overflow: "hidden",
   },
   progressContainer: {
     textAlign: "center",
@@ -39,11 +37,6 @@ const styles = {
     top: "50vh",
     right: "0",
     color: "white",
-  },
-  weatherContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
   },
   failContainer: {
     color: "white",
@@ -138,31 +131,62 @@ function Image({ classes }) {
     );
   } else {
     return (
-      <div
-        container="true"
-        className={classes.gridContainer}
-        style={{ backgroundImage: `url(${images.images[imageIndex]})` }}
-      >
-        <IconButton onClick={handlePrevClick} className={classes.prevButton}>
-          <NavigateBeforeIcon />
-        </IconButton>
-        <IconButton onClick={handleNextClick} className={classes.nextButton}>
-          <NavigateNextIcon />
-        </IconButton>
-        <div className={classes.weatherContainer}>
-          <Weather />
-        </div>
-        <GoalsContainer rainConfetti={rainConfetti} />
-        <ReactCanvasConfetti
-          ref={confettiEl}
+      <div container="true" className={classes.gridContainer}>
+        <img
+          src={images.images[imageIndex]}
           style={{
-            position: "fixed",
-            height: "100vh",
-            width: "100vw",
-            pointerEvents: "none",
+            width: "100%",
+            height: "100%",
+            filter: "brightness(0.5) blur(5px)",
+            objectFit: "cover",
+            transform: "scale(1.5)",
           }}
+          alt=""
         />
-        <Quote />
+        <div
+          style={{
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            paddingTop: "1rem",
+            top: 0,
+          }}
+        >
+          <div style={{ position: "relative", width: "100%", height: "100%" }}>
+            <IconButton
+              onClick={handlePrevClick}
+              className={classes.prevButton}
+            >
+              <NavigateBeforeIcon />
+            </IconButton>
+            <IconButton
+              onClick={handleNextClick}
+              className={classes.nextButton}
+            >
+              <NavigateNextIcon />
+            </IconButton>
+            <div className={classes.weatherContainer}>
+              <Weather />
+            </div>
+            <div style={{ marginTop: "5%" }}>
+              <GoalsContainer rainConfetti={rainConfetti} />
+            </div>
+            <ReactCanvasConfetti
+              ref={confettiEl}
+              style={{
+                position: "fixed",
+                height: "100vh",
+                width: "100vw",
+                pointerEvents: "none",
+                top: "10%",
+                left: 0,
+              }}
+            />
+            <div style={{ position: "absolute", bottom: 0 }}>
+              <Quote />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

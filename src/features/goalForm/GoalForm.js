@@ -7,9 +7,14 @@ import { useDispatch } from "react-redux";
 const styles = {
   paper: {
     backgroundColor: "rgba(255, 255, 255, 0.5)",
-    padding: "1rem",
+    padding: "1.5rem",
+    paddingBottom: "2rem",
     boxSizing: "border-box",
     marginTop: "1rem",
+    backdropFilter: " blur(10px)",
+    background: "rgba(255, 255, 255, 0.25)",
+    boxShadow: "0 8px 32px 0 rgb(31 38 135 / 37%)",
+    borderRadius: "10px",
   },
   h2: {
     margin: "0",
