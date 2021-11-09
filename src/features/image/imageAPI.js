@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const fetchImages = async () => {
-  const key = process.env.REACT_APP_IMAGE_API_KEYS;
+  const key = process.env.REACT_APP_IMAGE_API_KEY;
   // console.log("Key is " + key);
   const API_URL = `https://api.unsplash.com/photos/random?client_id=${key}&count=5&query=nature`;
 
