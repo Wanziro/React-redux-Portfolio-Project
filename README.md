@@ -29,3 +29,5 @@ This project uses different APIs to display the current weather, a background im
 - Netlify (for deplyoment)
 
 # Designed by Fabrice Niyongabo @wanziro
+
+[Project deployed link](https://react-redux-portfolio-project.netlify.app/ "Portifolio project using redux")
